@@ -14,7 +14,7 @@ char pnum_count(int x);
 int main(void)
 {
   int  cell, flag, cnt = 0, char_cnt = 0;
-  long i, j, from, to, interval_cnt = 0;
+  long i, j, from, to;
 
   cout << "Input 'from' number: ";
   cin >> from;
@@ -39,12 +39,10 @@ int main(void)
       }
     if(flag == 0)
       cnt++;
-    interval_cnt++;
-    if(interval_cnt % INTERVAL == 0) {
+    if(i % INTERVAL == 0) {
       cout << pnum_count(cnt);
       char_cnt++;
       cnt = 0;
-      interval_cnt = 0;
     }
     if(char_cnt >= LINESIZE) {
       cout << '|' << endl;
