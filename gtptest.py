@@ -1,4 +1,8 @@
-import os, sys, time
+#!/usr/bin/env python
+# encoding: utf-8
+# This program needs GnuGo
+
+import os, sys
 
 def run_gtp():
     os.execlp('gnugo', 'gnugo', '--mode', 'gtp')
@@ -33,6 +37,14 @@ def operate():
             temp = raw_input()
             break
         temp = raw_input()
+
+    print 'showboard'
+    sys.stdout.flush()
+    temp = raw_input()
+    while temp != '':
+        ope_fh.write(temp + '\n')
+        temp = raw_input()
+    ope_fh.write('\n')
 
     print 'final_score'
     sys.stdout.flush()
