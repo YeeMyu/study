@@ -12,7 +12,11 @@ def operate():
     black_res = ''
     white_res = ''
 
-    print 'boardsize 9'
+    print 'boardsize 13'
+    sys.stdout.flush()
+    temp = raw_input()
+    temp = raw_input()
+    print 'komi 6.5'
     sys.stdout.flush()
     temp = raw_input()
     temp = raw_input()
