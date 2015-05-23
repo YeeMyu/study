@@ -4,7 +4,7 @@
 import java.io.*;
 
 class SolveMaze {
-    private final int SIZE = 50;
+    private final int SIZE = 30;
     private char m[][] = new char[SIZE][SIZE];
     private DirPattern dp[][] = new DirPattern[4][4];
 
