@@ -1,22 +1,22 @@
 #!/usr/bin/env python
-# encoding: utf-8
-# This program needs GnuGo
+# -*- coding: utf-8 -*-
+# This program needs GNU Go
 
 import os, sys
 
 def run_gtp():
     os.execlp('gnugo', 'gnugo', '--mode', 'gtp')
 
-def operate():
+def operate(size, komi):
     ope_fh = open('operate.log', 'w')
     black_res = ''
     white_res = ''
 
-    print 'boardsize 13'
+    print 'boardsize ' + str(size) 
     sys.stdout.flush()
     temp = raw_input()
     temp = raw_input()
-    print 'komi 6.5'
+    print 'komi ' + str(komi)
     sys.stdout.flush()
     temp = raw_input()
     temp = raw_input()
@@ -59,6 +59,26 @@ def operate():
     sys.stdout.flush()
     ope_fh.close()
 
+while 1:
+    print 'boardsize = ',
+    try:
+        size = int(raw_input())
+    except ValueError:
+        continue
+    else:
+        if size > 1 and size <= 19:
+            break
+
+while 1:
+    print 'komi = ',
+    try:
+        komi = float(raw_input())
+    except ValueError:
+        continue
+    else:
+        if komi >= 0 and komi < 100:
+            break;
+
 stdin = sys.stdin.fileno()
 stdout = sys.stdout.fileno()
 p_stdin, c_stdout = os.pipe()
@@ -70,7 +90,7 @@ if pid:
     os.close(c_stdin)
     os.dup2(p_stdin, stdin)
     os.dup2(p_stdout, stdout)
-    operate()
+    operate(size, komi)
 else:
     # child
     os.close(p_stdin)
